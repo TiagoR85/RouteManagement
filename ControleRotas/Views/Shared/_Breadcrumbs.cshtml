@@ -1,0 +1,14 @@
+﻿@{
+    var breadcrumbs = ViewBag.breadcrumbs;
+}
+<ol class="breadcrumb">
+    @if (breadcrumbs != null)
+    {
+        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="active">@ViewBag.breadcrumbs</li>
+    }
+    else
+    {
+        <li class="active">Home</li>
+    }
+</ol>

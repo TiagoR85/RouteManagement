@@ -12,11 +12,15 @@ namespace ControleRotas.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Index";
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contact()
         {
+            ViewData["Message"] = "Your contact page.";
+            ViewBag.breadcrumbs = "Contact";
+
             return View();
         }
 
