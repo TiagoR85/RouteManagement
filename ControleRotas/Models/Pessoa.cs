@@ -6,25 +6,33 @@ using System.Threading.Tasks;
 
 namespace ControleRotas.Models
 {
-    [Table("Pessoas")]
-    public partial class Pessoas
+    public partial class Pessoa
     {
-        public int Id { get; set; }
-        public string NomeComp { get; set; }
-        public DateTime DataInclusao { get; set; }
+		private string _razaoSocial;
+		
+		public Pessoa(){
+			DataInclusao = new DateTime().Now;
+			DataAlteracao = DataInclusao;
+			Ativo = true;
+		}
+		
+        public int PessoaId { get; set; }
+		public string NomeComp { get; set; }
+		public string RazaoSocial { get; set => _razaoSocial == null ? NomeComp : _razaoSocial }
+        public DateTime DataInclusao { get; private set; }
+		[Required]
         public DateTime DataAlteracao { get; set; }
         public DateTime DataExclusao { get; set; }
-        public bool Ativo { get; set; }
-        public int TipoPessoa { get; set; }
+		public TipoContrante TipoContrante { get; set; }
+        public EnumStatusPeoples Ativo { get; set; }
+		[Required]
+        public TipoPessoa TipoPessoa { get; set; }
         public DateTime Nascimento { get; set; }
         public string Cpf_Cnpj { get; set; }
         public string Ie_Rg { get; set; }
 
-        [NotMapped]
         public ICollection<Email> Emails { get; set; }
-        [NotMapped]
         public ICollection<Endereco> Enderecos { get; set; }
-        [NotMapped]
         public ICollection<Telefone> Telefones { get; set; }
     }
 }

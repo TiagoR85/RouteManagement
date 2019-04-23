@@ -15,7 +15,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                db.Add(entity);
+                db.Set<T>().Add(entity);
             }
             catch (Exception ex)
             {
@@ -39,6 +39,21 @@ namespace ControleRotas.Repository
             }
             
         }
+		
+		public T GetById(Expression<Func<T, bool>> expression)
+        {
+            try
+            {
+                T query = db.Set<T>().Where(expression);
+                return query;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ExceptionApp("Erro ao obter por id. ", ex);
+            }
+            
+        }
 
         public IEnumerable<T> GetAll()
         {
@@ -58,7 +73,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                db.Remove(entity);
+                db.Set<T>().Remove(entity);
             }
             catch (Exception ex)
             {
@@ -72,7 +87,7 @@ namespace ControleRotas.Repository
             {
                 db.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 //implementacao
-                CommitDb();
+                CommitChanges();
             }
             catch (Exception ex)
             {
@@ -80,11 +95,11 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void CommitDb()
+        public void CommitChanges();
         {
             try
             {
-                db.SaveChanges();
+                db.Set<T>().SaveChanges();
             }
             catch (Exception ex)
             {

@@ -4,7 +4,7 @@ namespace ControleRotas.Models
 {
     public class Enums
     {
-        public enum TypeAddress
+        public enum TipoEndereco
         {
             [Description("Residencial")] Residencial,
             [Description("Comercial")] Comercial,
@@ -12,26 +12,32 @@ namespace ControleRotas.Models
             [Description("Cobrança")] Cobranca
         }
 
-        public enum TypePerson
+        public enum TipoPessoa
         {
             [Description("Pessoa Jurídica")] Pessoa_Juridica,
             [Description("Pessoa Física")] Pessoa_Fisica
         }
+		
+		public enum TipoContrante
+        {
+            [Description("Fornecedor")] Fornecedor,
+            [Description("Cliente")] Cliente
+        }
 
-        public enum TypePhone
+        public enum TipoTelefone
         {
             [Description("Residencial")] Residencial,
             [Description("Comercial")] Comercial,
             [Description("Celular")] Celular
         }
 
-        public enum TypeAccount
+        public enum TipoConta
         {
             [Description("Pagar")] Pagar,
             [Description("Receber")] Receber
         }
 
-        public enum TypeFrequency
+        public enum TipoFrequencia
         {
             [Description("Semanal")] Semanal,
             [Description("Quinzenal")] Quinzenal,
@@ -41,19 +47,19 @@ namespace ControleRotas.Models
             [Description("Anual")] Anual
         }
 
-        public enum TypeParcel
+        public enum TipoParcela
         {
             [Description("Valor Dividido")] Valor_Dividido,
             [Description("Valor Repetido")] Valor_Repetido
         }
 
-        public enum TypeOrderAccount
+        public enum TipoOrdenacaoConta
         {
             [Description("Data de Vencimento")] Vencimento,
             [Description("Data de Quitação")] Quitacao
         }
 
-        public enum TypeSituationAccount
+        public enum TipoSituacaoConta
         {
             [Description("Em Aberto")] Aberto,
             [Description("Quitado")] Quitado,
@@ -62,21 +68,20 @@ namespace ControleRotas.Models
             [Description("Perda")] Perda
         }
 
-        public enum TypeFilterAccount
+        public enum TipoFiltroConta
         {
             [Description("Data de Vencimento")] DataDeVencimento,
             [Description("Data de Emissão")] DataDeEmissao,
             [Description("Data de Quitação")] DataDeQuitacao
         }
 
-        public enum TypeSituationContractor
+        public enum TipoSituacao
         {
             [Description("Ativo")] Ativo,
             [Description("Inativo")] Inativo,
-            [Description("Em Atrazo")] EmAtrazo
         }
 
-        public enum TypeCardFlag
+        public enum TipoMarcaBandeira
         {
             [Description("American Express")] AmericanExpress,
             [Description("Elo")] Elo,
@@ -86,13 +91,6 @@ namespace ControleRotas.Models
             [Description("Diners Club")] DinersClub,
             [Description("BNDES")] BNDES,
             [Description("Outras Bandeiras")] Outros
-        }
-
-        public enum TypeFunctionCard
-        {
-            [Description("Recebimento")] Recebimento,
-            [Description("Pagamentos")] Pagamento,
-            [Description("Recebimento e Pagamento")] Ambos
         }
 
         public enum EnumContaMovimentacao
@@ -123,7 +121,7 @@ namespace ControleRotas.Models
             [Description("Cartão")] Cartao
         }
 
-        public enum TypeSummarized
+        public enum TipoRelatorio
         {
             [Description("Analítico")] Analitico,       // Completo
             [Description("Sintetizado")] Sintetizado    // Por Data
@@ -186,15 +184,6 @@ namespace ControleRotas.Models
             Venda = 2
         }
 
-        public enum EnumNivelConferenciaCaixa
-        {
-            [Description("Caixa")] Caixa = 0,
-            [Description("Operador de Caixa")] OperadorCaixa = 1,
-            [Description("Gerente")] Financeiro = 2,
-            [Description("Final Financeiro")] Final = 3,
-            [Description("Quebra de Caixa")] Quebra = 4
-        }
-
         public enum EnumTipoReajusteValores
         {
             [Description("Acréscimo no Valor")] Acrescimo,
@@ -221,12 +210,6 @@ namespace ControleRotas.Models
             Todos
         }
 
-        public enum EnumTipoEmissaoNota
-        {
-            [Description("Emissão Manual")] Manual = 0,
-            [Description("Emissão Automática")] Automatico = 1
-        }
-
         public enum EnumTipoValorConferenciaCaixa
         {
             [Description("Venda")] Venda,
@@ -246,13 +229,6 @@ namespace ControleRotas.Models
         {
             [Description("Somente em Abertos")] SomenteAberto = 0,
             [Description("Somente em Quitados")] SomenteQuitado = 1
-        }
-
-        public enum EnumArquivoRemessa
-        {
-            [Description("Somente boletos sem arquivos gerados")] NaoGerados = 1,
-            [Description("Somente boletos com arquivos gerados")] Gerados = 2,
-            [Description("Todos os boletos independente de arquivos")] Todos = 3
         }
 
         public enum EnumSituacaoContrato
