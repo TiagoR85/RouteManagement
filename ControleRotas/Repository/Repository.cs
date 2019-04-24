@@ -44,7 +44,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                T query = db.Set<T>().Where(expression);
+                T query = db.Set<T>().Where(expression).FirstOrDefault();
                 return query;
             }
             catch (Exception ex)
@@ -95,11 +95,11 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void CommitChanges();
+        public void CommitChanges()
         {
             try
             {
-                db.Set<T>().SaveChanges();
+                db.SaveChanges();
             }
             catch (Exception ex)
             {
