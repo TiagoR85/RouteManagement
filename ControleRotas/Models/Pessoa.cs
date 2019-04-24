@@ -10,7 +10,7 @@ namespace ControleRotas.Models
 		public Pessoa(){
             DataInclusao = DateTime.Now;
 			DataAlteracao = DataInclusao;
-			Ativo = EnumStatusPeoples.Ativo;
+			Ativo = TipoSituacao.Ativo;
             Emails = new List<Email>();
             Telefones = new List<Telefone>();
             Enderecos = new List<Endereco>();
@@ -22,7 +22,6 @@ namespace ControleRotas.Models
 
         public string RazaoSocial { get; set; }
 
-        [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInclusao { get; private set; }
@@ -38,7 +37,7 @@ namespace ControleRotas.Models
 
         public TipoContrante TipoContrante { get; set; }
 
-        public EnumStatusPeoples Ativo { get; set; }
+        public TipoSituacao Ativo { get; set; }
 
         [Required]
         public TipoPessoa TipoPessoa { get; set; }
@@ -55,10 +54,10 @@ namespace ControleRotas.Models
 
         public string InscrMunicipal { get; set; }
 
-        public IEnumerable<Email> Emails { get; set; }
+        public virtual IEnumerable<Email> Emails { get; set; }
 
-        public IEnumerable<Endereco> Enderecos { get; set; }
+        public virtual IEnumerable<Endereco> Enderecos { get; set; }
 
-        public IEnumerable<Telefone> Telefones { get; set; }
+        public virtual IEnumerable<Telefone> Telefones { get; set; }
     }
 }

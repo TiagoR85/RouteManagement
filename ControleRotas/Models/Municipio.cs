@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ControleRotas.Models
 {
-    [Table("Cidades")]
-    public partial class Cidades
+    public partial class Municipio
     {
+        public int MunicipioId { get; set; }
         public int CodIbge { get; set; }
-        public string Uf { get; set; }
         public string Nome { get; set; }
-        public string Pais { get; set; }
+        public EnumEstadosBr Uf { get; set; }
     }
 }

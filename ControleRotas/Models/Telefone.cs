@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace ControleRotas.Models
 {
-    [Table("Telefone")]
     public partial class Telefone
     {
-        public int Id { get; set; }
-        [Column("Telefone")]
+        public int TelefoneId { get; set; }
         public string NumTelefone { get; set; }
-        public int TipoTelefone { get; set; }
+        public TipoTelefone TipoTelefone { get; set; }
         public int PessoaId { get; set; }
+		public virtual Pessoa Pessoa { get; set; }
     }
 }

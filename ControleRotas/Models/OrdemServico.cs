@@ -6,19 +6,41 @@ using System.Threading.Tasks;
 
 namespace ControleRotas.Models
 {
-    [Table("ordemServico")]
     public partial class OrdemServico
     {
-        public int Id { get; set; }
-        public DateTime DataInclusao { get; set; }
+		public OrdemServico()
+		{
+			DataInclusao = DateTime.Now;
+			DataAlteracao = DataInclusao;
+			Ativo = TipoSituacao.Ativo;
+			SituacaoServico = TipoSituacaoConta.Aberto;
+		}
+		
+        public int OrdemServicoId { get; set; }
+        public TipoSituacao Ativo { get; set; }
+	
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        public DateTime DataInclusao { get; private set; }
+
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataAlteracao { get; set; }
-        public DateTime DataFinal { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        public DateTime DataExclusao { get; set; }
+		
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataPagamento { get; set; }
+		
         public string Solicitante { get; set; }
         public string Passageiro { get; set; }
-        public int EndBase { get; set; }
-        public int EndOrigem { get; set; }
-        public int EndDestino { get; set; }
+        public virtual Endereco EndBase { get; set; }
+        public virtual Endereco EndOrigem { get; set; }
+        public virtual Endereco EndDestino { get; set; }
         public string KmPercorrida { get; set; }
         public decimal ValorPedagio { get; set; }
         public decimal ValorCobrado { get; set; }
@@ -28,9 +50,9 @@ namespace ControleRotas.Models
         public string NumOs { get; set; }
         public string Observacao { get; set; }
         public string NfeMotorista { get; set; }
-        public bool statusPag { get; set; }
-        public int Veiculo { get; set; }
-        public int Motorista { get; set; }
+        public TipoSituacaoConta SituacaoServico { get; set; }
+        public virtual Veiculo Veiculo { get; set; }
+        public virtual Motorista Motorista { get; set; }
 
     }
 }

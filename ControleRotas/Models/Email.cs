@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ControleRotas.Models
 {
-    [Table("Email")]
     public partial class Email
     {
-        public int Id { get; set; }
+        public int EmailId { get; set; }
         public string EndEmail { get; set; }
-        public int PessoaId { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
     }
 }
