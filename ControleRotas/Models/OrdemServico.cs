@@ -36,23 +36,23 @@ namespace ControleRotas.Models
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataPagamento { get; set; }
 		
-        public string Solicitante { get; set; }
+        public virtual Pessoa? Solicitante { get; set; }
         public string Passageiro { get; set; }
         public virtual Endereco EndBase { get; set; }
         public virtual Endereco EndOrigem { get; set; }
         public virtual Endereco EndDestino { get; set; }
         public string KmPercorrida { get; set; }
-        public decimal ValorPedagio { get; set; }
-        public decimal ValorCobrado { get; set; }
-        public decimal Acrescimo { get; set; }
-        public decimal Desconto { get; set; }
-        public decimal ValorTotal { get; set; }
+        public decimal? ValorPedagio { get; set; }
+        public decimal? ValorCobrado { get; set; }
+        public decimal? Acrescimo { get; set; }
+        public decimal? Desconto { get; set; }
+        public decimal? ValorTotal { get; set; }
         public string NumOs { get; set; }
         public string Observacao { get; set; }
         public string NfeMotorista { get; set; }
         public TipoSituacaoConta SituacaoServico { get; set; }
-        public virtual Veiculo Veiculo { get; set; }
-        public virtual Motorista Motorista { get; set; }
+        public virtual Veiculo? Veiculo { get; set; }
+        public virtual Motorista? Motorista { get; set; }
 
     }
 }

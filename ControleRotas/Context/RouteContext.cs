@@ -133,11 +133,43 @@ namespace ControleRotas.Context
 			modelBuilder.Entity<OrdemServico>()
                 .Property(e => e.SituacaoServico).HasConversion<string>();
 
+			modelBuilder.Entity<OrdemServico>()
+                .Property(p => p.ValorPedagio).HasColumnType("decimal(6, 2)");
+				
+			modelBuilder.Entity<OrdemServico>()
+                .Property(p => p.ValorCobrado).HasColumnType("decimal(6, 2)");
+			
+			modelBuilder.Entity<OrdemServico>()
+                .Property(p => p.Acrescimo).HasColumnType("decimal(6, 2)");
+			
+			modelBuilder.Entity<OrdemServico>()
+                .Property(p => p.Desconto).HasColumnType("decimal(6, 2)");
+
+			modelBuilder.Entity<OrdemServico>()
+                .Property(p => p.ValorTotal).HasColumnType("decimal(6, 2)");
+				
+			#endregion
+	
+			#region Funcionario
+			
+			modelBuilder.Entity<Funcionario>()
+                .HasOne(p => p.Pessoa)
+				.WithOne();
+
+			modelBuilder.Entity<Funcionario>()
+                .Property(e => e.Senha).IsRequired();
+
+			modelBuilder.Entity<Funcionario>()
+                .Property(e => e.NivelAcesso)
+				.HasDefaultValue(0)
+				.HasMaxLength(10).IsRequired();
+				
 			#endregion
 		
 		}
 		
 		// public DbSet<Pessoa> Pessoas { get; set; }
+		// public DbSet<Funcionario> Funcionarios { get; set; }
         // public DbSet<Telefone> Telefones { get; set; }
         // public DbSet<Email> Emails { get; set; }
         // public DbSet<Endereco> Enderecos { get; set; }

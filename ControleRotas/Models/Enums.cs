@@ -22,7 +22,7 @@ namespace ControleRotas.Models
         {
             [Description("Fornecedor")] Fornecedor,
             [Description("Cliente")] Cliente,
-			[Description("Funcionário")] Funcionario
+			[Description("Funcionário")] Usuario
         }
 
         public enum TipoTelefone
