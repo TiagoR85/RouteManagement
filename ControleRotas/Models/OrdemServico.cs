@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using static ControleRotas.Models.Enums;
 
 namespace ControleRotas.Models
 {
@@ -36,7 +34,7 @@ namespace ControleRotas.Models
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataPagamento { get; set; }
 		
-        public virtual Pessoa? Solicitante { get; set; }
+        public virtual Pessoa Solicitante { get; set; }
         public string Passageiro { get; set; }
         public virtual Endereco EndBase { get; set; }
         public virtual Endereco EndOrigem { get; set; }
@@ -49,10 +47,10 @@ namespace ControleRotas.Models
         public decimal? ValorTotal { get; set; }
         public string NumOs { get; set; }
         public string Observacao { get; set; }
-        public string NfeMotorista { get; set; }
+        public string NfSeMotorista { get; set; }
         public TipoSituacaoConta SituacaoServico { get; set; }
-        public virtual Veiculo? Veiculo { get; set; }
-        public virtual Motorista? Motorista { get; set; }
+        public virtual Veiculo Veiculo { get; set; }
+        public virtual Motorista Motorista { get; set; }
 
     }
 }

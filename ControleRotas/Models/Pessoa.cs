@@ -10,7 +10,8 @@ namespace ControleRotas.Models
 		public Pessoa(){
             DataInclusao = DateTime.Now;
 			DataAlteracao = DataInclusao;
-			Ativo = TipoSituacao.Ativo;
+            Status = TipoSituacao.Ativo;
+            Grupo = new List<string>();
             Emails = new List<Email>();
             Telefones = new List<Telefone>();
             Enderecos = new List<Endereco>();
@@ -37,7 +38,7 @@ namespace ControleRotas.Models
 
         public TipoContrante TipoContrante { get; set; }
 
-        public TipoSituacao Ativo { get; set; }
+        public TipoSituacao Status { get; set; }
 
         [Required]
         public TipoPessoa TipoPessoa { get; set; }
@@ -53,6 +54,8 @@ namespace ControleRotas.Models
         public string Ie_Rg { get; set; }
 
         public string InscrMunicipal { get; set; }
+
+        public IEnumerable<string> Grupo { get; set; }
 
         public virtual IEnumerable<Email> Emails { get; set; }
 

@@ -9,7 +9,7 @@ namespace ControleRotas.Models
     {
         public int MotoristaId { get; set; }
         public string CodMotorista { get; set; }
-        public virtual Veiculo? Veiculo { get; set; }
-        public virtual Pessoa? Pessoa { get; set; }
+        public virtual Veiculo Veiculo { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
 	}
 }

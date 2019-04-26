@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static ControleRotas.Models.Enums;
 
 namespace ControleRotas.Models
 {
     public partial class Veiculo
     {
 		public Veiculo(){
-			DataInclusao = DateTime.Now
+            DataInclusao = DateTime.Now;
 			DataAlteracao = DataInclusao;
-			Ativo = TipoSituacao.Ativo;
+			Status = TipoSituacao.Ativo;
+            Disponivel = EnumTipoSimNao.Sim;
 		}
 		
         public int VeiculoId { get; set; }
@@ -20,7 +23,7 @@ namespace ControleRotas.Models
         public string Ano { get; set; }
 		public string Renavan { get; set; }
 		public EnumTipoSimNao Disponivel { get; set; }
-		public TipoSituacao Ativo { get; set; }
+		public TipoSituacao Status { get; set; }
 	
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]

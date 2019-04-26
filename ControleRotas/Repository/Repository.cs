@@ -44,7 +44,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                T query = db.Set<T>().Where(expression).FirstOrDefault();
+                T query = db.Set<T>().First(expression);
                 return query;
             }
             catch (Exception ex)

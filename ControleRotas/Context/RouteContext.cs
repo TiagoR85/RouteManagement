@@ -31,7 +31,7 @@ namespace ControleRotas.Context
                 .Property(im => im.InscrMunicipal).HasColumnName("Inscr. Municipal");
 				
             modelBuilder.Entity<Pessoa>()
-                .Property(e => e.Ativo).HasConversion<string>().HasMaxLength(20);
+                .Property(e => e.Status).HasConversion<string>().HasMaxLength(20);
 
             modelBuilder.Entity<Pessoa>()
                 .Property(e => e.TipoPessoa).HasConversion<string>().HasMaxLength(20);
@@ -70,9 +70,6 @@ namespace ControleRotas.Context
 				.HasForeignKey<Endereco>(m => m.MunicipioId);
 				
 			modelBuilder.Entity<Endereco>()
-                .Property(e => e.Uf).HasConversion<string>().HasMaxLength(30);
-			
-			modelBuilder.Entity<Endereco>()
                 .HasOne<Pessoa>(p => p.Pessoa)
                 .WithMany(end => end.Enderecos)
                 .HasForeignKey(p => p.PessoaId);
@@ -85,11 +82,11 @@ namespace ControleRotas.Context
                 .Property(i => i.Bairro).IsRequired()
                 .HasMaxLength(200);
 				
-				modelBuilder.Entity<Endereco>()
+			modelBuilder.Entity<Endereco>()
                 .Property(i => i.Cep).IsRequired()
                 .HasMaxLength(8);
 				
-				modelBuilder.Entity<Endereco>()
+			modelBuilder.Entity<Endereco>()
                 .Property<Municipio>(m => m.Municipio).IsRequired()
                 .HasMaxLength(200);
 				
@@ -121,7 +118,7 @@ namespace ControleRotas.Context
 				.IsRequired();
 
 			modelBuilder.Entity<Veiculo>()
-                .Property(e => e.Ativo).HasConversion<string>();
+                .Property(e => e.Status).HasConversion<string>();
 
 			#endregion
 			
@@ -174,7 +171,7 @@ namespace ControleRotas.Context
         // public DbSet<Email> Emails { get; set; }
         // public DbSet<Endereco> Enderecos { get; set; }
         // public DbSet<Veiculo> Veiculos { get; set; }
-		public DbSet<Motorista> Motoristas { get; set; }
+		// public DbSet<Motorista> Motoristas { get; set; }
 		
     }
 }
