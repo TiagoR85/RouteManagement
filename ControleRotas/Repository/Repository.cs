@@ -9,13 +9,18 @@ namespace ControleRotas.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        readonly RouteContext db = new RouteContext();
+        readonly RouteContext _db;
+
+        public Repository(RouteContext db)
+        {
+            _db = db;
+        }
 
         public void Add(T entity)
         {
             try
             {
-                db.Set<T>().Add(entity);
+                _db.Set<T>().Add(entity);
             }
             catch (Exception ex)
             {
@@ -29,7 +34,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                IEnumerable<T> query = db.Set<T>().Where(expression);
+                IEnumerable<T> query = _db.Set<T>().Where(expression);
                 return query;
             }
             catch (Exception ex)
@@ -44,7 +49,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                T query = db.Set<T>().First(expression);
+                T query = _db.Set<T>().First(expression);
                 return query;
             }
             catch (Exception ex)
@@ -59,7 +64,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                IEnumerable<T> query = db.Set<T>().ToList();
+                IEnumerable<T> query = _db.Set<T>().ToList();
                 return query;
             }
             catch (Exception ex)
@@ -73,7 +78,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                db.Set<T>().Remove(entity);
+                _db.Set<T>().Remove(entity);
             }
             catch (Exception ex)
             {
@@ -85,7 +90,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                db.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _db.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 //implementacao
                 CommitChanges();
             }
@@ -99,7 +104,7 @@ namespace ControleRotas.Repository
         {
             try
             {
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -110,7 +115,7 @@ namespace ControleRotas.Repository
 
         public void Dispose()
         {
-            db.Dispose();
+            _db.Dispose();
         }
     }
 }

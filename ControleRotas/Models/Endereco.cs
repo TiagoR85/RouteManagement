@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ControleRotas.Models
+﻿namespace ControleRotas.Models
 {
     public partial class Endereco
     {
@@ -14,9 +8,7 @@ namespace ControleRotas.Models
         public string Bairro { get; set; }
         public string Complemento { get; set; }
         public string Cep { get; set; }
-        public int MunicipioId { get; set; }
         public virtual Municipio Municipio { get; set; }
-        public int PessoaId { get; set; }
 		public virtual Pessoa Pessoa { get; set; }
     }
 }

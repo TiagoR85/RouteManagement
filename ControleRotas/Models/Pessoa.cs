@@ -11,19 +11,19 @@ namespace ControleRotas.Models
             DataInclusao = DateTime.Now;
 			DataAlteracao = DataInclusao;
             Status = TipoSituacao.Ativo;
-            Grupo = new List<string>();
             Emails = new List<Email>();
             Telefones = new List<Telefone>();
             Enderecos = new List<Endereco>();
-		}
+            Agendas = new List<Agenda>();
 
+        }
         public int PessoaId { get; set; }
 
         public string NomeComp { get; set; }
 
         public string RazaoSocial { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInclusao { get; private set; }
 
@@ -32,7 +32,6 @@ namespace ControleRotas.Models
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataAlteracao { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataExclusao { get; set; }
 
@@ -55,12 +54,16 @@ namespace ControleRotas.Models
 
         public string InscrMunicipal { get; set; }
 
-        public IEnumerable<string> Grupo { get; set; }
+        public string Grupo { get; set; }
+
+        public virtual Funcionario Funcionario { get; set; }
 
         public virtual IEnumerable<Email> Emails { get; set; }
 
         public virtual IEnumerable<Endereco> Enderecos { get; set; }
 
         public virtual IEnumerable<Telefone> Telefones { get; set; }
+
+        public virtual IEnumerable<Agenda> Agendas { get; set; }
     }
 }

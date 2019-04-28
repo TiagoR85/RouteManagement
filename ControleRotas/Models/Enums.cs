@@ -12,13 +12,26 @@ namespace ControleRotas.Models
             [Description("Cobrança")] Cobranca
         }
 
+        public enum TipoUrgencia
+        {
+            Alta,
+            [Description("Média")] Media,
+            Baixa
+        }
+
         public enum TipoPessoa
         {
             [Description("Pessoa Jurídica")] Pessoa_Juridica,
             [Description("Pessoa Física")] Pessoa_Fisica
         }
-		
-		public enum TipoContrante
+
+        public enum TipoConfirmacao
+        {
+            [Description("Confirmado")] Confirmado,
+            [Description("Ausência")] Ausente
+        }
+
+        public enum TipoContrante
         {
             [Description("Fornecedor")] Fornecedor,
             [Description("Cliente")] Cliente,

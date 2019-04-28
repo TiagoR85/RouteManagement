@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static ControleRotas.Models.Enums;
 
 namespace ControleRotas.Models
@@ -12,12 +13,16 @@ namespace ControleRotas.Models
 			DataAlteracao = DataInclusao;
 			Ativo = TipoSituacao.Ativo;
 			SituacaoServico = TipoSituacaoConta.Aberto;
+            Urgencia = TipoUrgencia.Media;
+            Agenda.DataInclusao = DataInclusao;
+            Agenda.DataAlteracao = DataAlteracao;
 		}
 		
         public int OrdemServicoId { get; set; }
         public TipoSituacao Ativo { get; set; }
-	
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        public TipoUrgencia Urgencia { get; set; }
+
+        [DisplayFormat( DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInclusao { get; private set; }
 
@@ -26,11 +31,9 @@ namespace ControleRotas.Models
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataAlteracao { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataExclusao { get; set; }
 		
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataPagamento { get; set; }
 		
@@ -50,7 +53,14 @@ namespace ControleRotas.Models
         public string NfSeMotorista { get; set; }
         public TipoSituacaoConta SituacaoServico { get; set; }
         public virtual Veiculo Veiculo { get; set; }
-        public virtual Motorista Motorista { get; set; }
+        public virtual Agenda Agenda { get; set; }
+
+        //public virtual Motorista Motorista { get; set; }
+        [NotMapped]
+        public bool Status
+        {
+            get { return DataExclusao == null; }
+        }
 
     }
 }

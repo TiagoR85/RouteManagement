@@ -7,7 +7,7 @@ namespace ControleRotas.Models
         public int TelefoneId { get; set; }
         public string NumTelefone { get; set; }
         public TipoTelefone TipoTelefone { get; set; }
-        public int PessoaId { get; set; }
+        //public int PessoaId { get; set; }
 		public virtual Pessoa Pessoa { get; set; }
     }
 }
