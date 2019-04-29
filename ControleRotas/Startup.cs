@@ -1,4 +1,6 @@
 ﻿using ControleRotas.Context;
+using ControleRotas.Repository;
+using ControleRotas.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,10 +13,7 @@ namespace ControleRotas
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -28,8 +27,13 @@ namespace ControleRotas
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddDbContext<RouteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RouteContext")));
-            services.AddDbContext<RouteContext>();
+            //Dependency Injection Context
+            services.AddDbContext<RouteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RouteContext")));
+            //services.AddDbContext<RouteContext>();
+
+            //Dependency Injection Repository
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -52,7 +56,7 @@ namespace ControleRotas
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-                        
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

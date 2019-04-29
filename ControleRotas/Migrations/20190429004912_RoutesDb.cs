@@ -51,7 +51,8 @@ namespace ControleRotas.Migrations
                 name: "Pessoa",
                 columns: table => new
                 {
-                    PessoaId = table.Column<int>(nullable: false),
+                    PessoaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     NomeComp = table.Column<string>(maxLength: 50, nullable: false),
                     RazaoSocial = table.Column<string>(nullable: true),
                     DataInclusao = table.Column<DateTime>(nullable: false),

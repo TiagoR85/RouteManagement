@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ControleRotas.Models
+﻿namespace ControleRotas.Models
 {
     public partial class Motorista
     {

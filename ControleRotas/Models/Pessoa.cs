@@ -58,12 +58,12 @@ namespace ControleRotas.Models
 
         public virtual Funcionario Funcionario { get; set; }
 
-        public virtual IEnumerable<Email> Emails { get; set; }
+        public virtual IList<Email> Emails { get; set; }
 
-        public virtual IEnumerable<Endereco> Enderecos { get; set; }
+        public virtual IList<Endereco> Enderecos { get; set; }
 
-        public virtual IEnumerable<Telefone> Telefones { get; set; }
+        public virtual IList<Telefone> Telefones { get; set; }
 
-        public virtual IEnumerable<Agenda> Agendas { get; set; }
+        public virtual IList<Agenda> Agendas { get; set; }
     }
 }

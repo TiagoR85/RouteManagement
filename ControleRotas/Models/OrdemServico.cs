@@ -55,12 +55,8 @@ namespace ControleRotas.Models
         public virtual Veiculo Veiculo { get; set; }
         public virtual Agenda Agenda { get; set; }
 
-        //public virtual Motorista Motorista { get; set; }
         [NotMapped]
-        public bool Status
-        {
-            get { return DataExclusao == null; }
-        }
+        public bool Status => DataExclusao == null;
 
     }
 }

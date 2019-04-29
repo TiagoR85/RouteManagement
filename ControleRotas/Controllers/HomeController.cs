@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ControleRotas.Models;
+using ControleRotas.Repository.Interfaces;
 
 namespace ControleRotas.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPessoaRepository Repository;
+
+        public HomeController(IPessoaRepository pessoaRepository)
+        {
+            Repository = pessoaRepository;
+        }
         public IActionResult Index()
         {
+            var ret = Repository.GetAll();
             ViewData["Title"] = "Index";
             return View();
         }

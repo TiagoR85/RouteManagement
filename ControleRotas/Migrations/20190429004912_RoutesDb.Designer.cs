@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleRotas.Migrations
 {
     [DbContext(typeof(RouteContext))]
-    [Migration("20190428180843_RoutesDb")]
+    [Migration("20190429004912_RoutesDb")]
     partial class RoutesDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

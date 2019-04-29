@@ -25,7 +25,7 @@ namespace ControleRotas.Models
 		public EnumTipoSimNao Disponivel { get; set; }
 		public TipoSituacao Status { get; set; }
 	
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInclusao { get; private set; }
 
@@ -34,7 +34,6 @@ namespace ControleRotas.Models
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataAlteracao { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataExclusao { get; set; }
     }
