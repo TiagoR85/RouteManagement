@@ -2,20 +2,29 @@
 using Microsoft.AspNetCore.Mvc;
 using ControleRotas.Models;
 using ControleRotas.Repository.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace ControleRotas.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPessoaRepository Repository;
+        private readonly IRepository<Pessoa> pessoaRepository;
+        private readonly IRepository<Email> emailRepository;
+        private readonly IRepository<Endereco> enderecoRepository;
 
-        public HomeController(IPessoaRepository pessoaRepository)
+        public HomeController(IRepository<Pessoa> pessoaRepository,
+                              IRepository<Email> emailRepository,
+                              IRepository<Endereco> enderecoRepository)
         {
-            Repository = pessoaRepository;
+            this.pessoaRepository = pessoaRepository;
+            this.emailRepository = emailRepository;
+            this.enderecoRepository = enderecoRepository;
         }
         public IActionResult Index()
         {
-            var ret = Repository.GetAll();
+            var p1 = pessoaRepository.GetAll();
+            var e1 = emailRepository.GetAll();
+            var end = enderecoRepository.GetAll();
             ViewData["Title"] = "Index";
             return View();
         }

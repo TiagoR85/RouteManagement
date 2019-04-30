@@ -33,7 +33,7 @@ namespace ControleRotas.Models
         public DateTime DataAlteracao { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-        public DateTime DataExclusao { get; set; }
+        public DateTime? DataExclusao { get; set; }
 
         public TipoContrante TipoContrante { get; set; }
 

@@ -14,7 +14,7 @@ namespace ControleRotas.Repository
 
         public Repository(RouteContext context) => Context = context;
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace ControleRotas.Repository
             }
         }       
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        public virtual IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace ControleRotas.Repository
             
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace ControleRotas.Repository
             }
         }
 
-        public T GetById(Expression<Func<T, bool>> expression)
+        public virtual T GetById(Expression<Func<T, bool>> expression)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace ControleRotas.Repository
             
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             try
             {
@@ -97,11 +97,12 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void Remove(T entity)
+        public virtual void Remove(T entity)
         {
             try
             {
-                //Context.Set<T>().Remove(entity);
+                Context.Set<T>().Attach(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                Save();
             }
             catch (Exception ex)
             {
@@ -109,12 +110,11 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             try
             {
-                Context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                var instance = Activator.CreateInstance(entity.GetType());
+                Context.Entry<T>(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 Save();
             }
             catch (Exception ex)
@@ -123,11 +123,11 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void UpdateAttach(T entity)
+        public virtual void UpdateAttach(T entity)
         {
             try
             {
-                Context.Set<T>().Attach(entity);
+                Context.Set<T>().Attach(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 Save();
             }
             catch (Exception ex)
@@ -136,7 +136,7 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void Save()
+        public virtual void Save()
         {
             try
             {
@@ -150,7 +150,9 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void Dispose()
+        public virtual void SetActive(int id, bool active) { }
+
+        private void Dispose()
         {
             Context.Dispose();
         }

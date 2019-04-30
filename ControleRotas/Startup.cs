@@ -33,7 +33,7 @@ namespace ControleRotas
 
             //Dependency Injection Repository
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IPessoaRepository, PessoaRepository>();
+            //services.AddScoped<IPessoaRepository, PessoaRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
