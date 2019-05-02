@@ -9,6 +9,6 @@
         public string Complemento { get; set; }
         public string Cep { get; set; }
         public virtual Municipio Municipio { get; set; }
-		public virtual Pessoa Pessoa { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
     }
 }

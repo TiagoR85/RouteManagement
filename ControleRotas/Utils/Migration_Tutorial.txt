@@ -1,0 +1,35 @@
+﻿		
+		MIGRATION TUTORIAL RÁPIDO
+
+- Para criação de uma nova versão:
+	- Crie as classes de Entidades.
+	- Com Nuget instalado vá em 
+		Ferramentas -> Console do Gerenciador de Pacotes
+	- Com o console aberto marque o Projeto Padrão para: Prj_Model
+	- No console execute o comando: 
+			PM> Add-Migration NOME_DA_VERSAO_A_SER_CRIADA
+
+- Para retornar uma versão anterior:
+	- Com Nuget instalado vá em 
+		Ferramentas -> Console do Gerenciador de Pacotes
+	- Com o console aberto marque o Projeto Padrão para: Prj_Model
+	- No console execute o comando:
+			PM> Update-Database -TargetMigration:NOME_DA_VERSAO_A_SER_RETORNADA -Force
+
+
+* Para alteração de uma versão já criada:
+	Utilizando os comandos acima:
+	- Retorne uma versão anterior a versão que será alterada.
+		- Com o console aberto marque o Projeto Padrão para: Prj_Model
+		- No console execute o comando: 
+			PM> Update-Database -TargetMigration:NOME_DA_VERSAO_ANTERIOR_A_DA_SER_ALTERADA -Force
+
+	- Exclua a classe de versão a ser alterada que se encontra no projeto
+		Prj_Model -> Migrations -> NOME_DA_VERSÃO_A_SER_ALTERADA
+			
+	- Altere ou crie novas classes de entidades.
+
+	- Após as devidas modificações crie novamente a classe de versão:
+		- Com o console aberto marque o Projeto Padrão para: Prj_Model
+		- No console execute o comando: 
+			PM> Add-Migration NOME_DA_VERSAO_ALTERADA

@@ -22,9 +22,6 @@ namespace ControleRotas.Controllers
         }
         public IActionResult Index()
         {
-            var p1 = pessoaRepository.GetAll();
-            var e1 = emailRepository.GetAll();
-            var end = enderecoRepository.GetAll();
             ViewData["Title"] = "Index";
             return View();
         }

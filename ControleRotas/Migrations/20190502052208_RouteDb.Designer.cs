@@ -4,14 +4,16 @@ using ControleRotas.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleRotas.Migrations
 {
     [DbContext(typeof(RouteContext))]
-    partial class RouteContextModelSnapshot : ModelSnapshot
+    [Migration("20190502052208_RouteDb")]
+    partial class RouteDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -389,8 +391,8 @@ namespace ControleRotas.Migrations
                         {
                             PessoaId = 1,
                             Cpf_Cnpj = "00937879959",
-                            DataAlteracao = new DateTime(2019, 5, 2, 2, 37, 35, 342, DateTimeKind.Local).AddTicks(6325),
-                            DataInclusao = new DateTime(2019, 5, 2, 2, 37, 35, 342, DateTimeKind.Local).AddTicks(6325),
+                            DataAlteracao = new DateTime(2019, 5, 2, 2, 22, 7, 638, DateTimeKind.Local).AddTicks(967),
+                            DataInclusao = new DateTime(2019, 5, 2, 2, 22, 7, 638, DateTimeKind.Local).AddTicks(967),
                             Grupo = "SuperUser",
                             Ie_Rg = "3808964",
                             Nascimento = new DateTime(1985, 11, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -489,8 +491,8 @@ namespace ControleRotas.Migrations
                         {
                             VeiculoId = 1,
                             Ano = "2010",
-                            DataAlteracao = new DateTime(2019, 5, 2, 2, 37, 35, 361, DateTimeKind.Local).AddTicks(3318),
-                            DataInclusao = new DateTime(2019, 5, 2, 2, 37, 35, 361, DateTimeKind.Local).AddTicks(3318),
+                            DataAlteracao = new DateTime(2019, 5, 2, 2, 22, 7, 663, DateTimeKind.Local).AddTicks(4259),
+                            DataInclusao = new DateTime(2019, 5, 2, 2, 22, 7, 663, DateTimeKind.Local).AddTicks(4259),
                             Disponivel = "Sim",
                             Marca = "PEUGEOT",
                             Modelo = "206",

@@ -4,14 +4,16 @@ using ControleRotas.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleRotas.Migrations
 {
     [DbContext(typeof(RouteContext))]
-    partial class RouteContextModelSnapshot : ModelSnapshot
+    [Migration("20190502053736_QueryFilter")]
+    partial class QueryFilter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
