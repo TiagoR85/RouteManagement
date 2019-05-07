@@ -14,9 +14,22 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 public static class Utils
 {
+    public static void SetObjectAsJson(this ISession session, string key, object value)
+    {
+        session.SetString(key, JsonConvert.SerializeObject(value));
+    }
+
+    public static T GetObjectFromJson<T>(this ISession session, string key)
+    {
+        var value = session.GetString(key);
+        return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+    }
+
     public static void Copy<T>(T source, T destination)
     {
         foreach (var propertyInfo in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance))

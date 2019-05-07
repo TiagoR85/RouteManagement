@@ -10,7 +10,7 @@ namespace ControleRotas.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly RouteContext Context;
+        protected readonly RouteContext Context;
 
         public Repository(RouteContext context) => Context = context;
 
@@ -27,11 +27,11 @@ namespace ControleRotas.Repository
             }
         }       
 
-        public virtual IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        public virtual IQueryable<T> Find(Expression<Func<T, bool>> expression)
         {
             try
             {
-                IEnumerable<T> query = Context.Set<T>().Where(expression);
+                IQueryable<T> query = Context.Set<T>().Where(expression);
                 return query;
             }
             catch (Exception ex)

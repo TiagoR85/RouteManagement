@@ -1,7 +1,75 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@{ 
+    Layout = null;
 }
+<!DOCTYPE html>
 
-<h2>Index</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@TempData["Title"]</title>
+    <!-- Última versão CSS compilada e minificada -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container" style="padding-top:50px">
+            @if (TempData["Erro"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>@TempData["Erro"]</strong>
+                </div>
+            }
+            <div class="panel panel-primary">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form asp-action="login" asp-controller="Login" class="form-horizontal">
+                        <fieldset>
+                            <!-- Prepended text-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="username"></label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Username</span>
+                                        <input id="username" name="username" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pass"></label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Password</span>
+                                        <input id="pass" name="password" class="form-control" type="password" required>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for=""></label>
+                                <div class="col-md-4">
+                                    <label class="checkbox-inline" for="perdeu">
+                                        <input type="checkbox" name="perdeu" id="perdeu" value="Sim">
+                                        Esqueceu sua senha?
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="logar"></label>
+                                <div class="col-md-8">
+                                    <button id="logar" name="logar" class="btn btn-primary">Logar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
+</html>

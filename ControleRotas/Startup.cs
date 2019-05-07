@@ -27,13 +27,15 @@ namespace ControleRotas
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSession();
             //Dependency Injection Context
             services.AddDbContext<RouteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RouteContext")));
             //services.AddDbContext<RouteContext>();
 
             //Dependency Injection Repository
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            //services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -52,7 +54,7 @@ namespace ControleRotas
                 app.UseHsts();
             }
 
-            //app.UseSession();
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -61,7 +63,7 @@ namespace ControleRotas
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }
