@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace ControleRotas.Repository.Interfaces
 {
-    public interface IPessoaRepository : IRepository<Pessoa>
+    public interface ITelefoneRepository : IRepository<Telefone>
     {
-        void SetActive(int id, bool active);
+        ICollection<Telefone> GetPhoneByPeople(Pessoa pessoa);
     }
 }

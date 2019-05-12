@@ -7,7 +7,7 @@ namespace ControleRotas.Repository.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        ICollection<T> GetAll();
 		T GetById(Expression<Func<T, bool>> expression);
         T GetById(int id);
         IQueryable<T> Find(Expression<Func<T, bool>> expression);

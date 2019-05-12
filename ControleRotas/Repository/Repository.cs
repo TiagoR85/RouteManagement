@@ -71,11 +71,11 @@ namespace ControleRotas.Repository
             
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public virtual ICollection<T> GetAll()
         {
             try
             {
-                IEnumerable<T> query = Context.Set<T>().ToList();
+                ICollection<T> query = Context.Set<T>().ToList();
                 return query;
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace ControleRotas.Repository
             }
         }
 
-        public void Remove(int id)
+        public virtual void Remove(int id)
         {
             try
             {

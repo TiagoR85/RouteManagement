@@ -1,6 +1,9 @@
 ﻿using ControleRotas.Context;
+using ControleRotas.Models;
 using ControleRotas.Repository;
 using ControleRotas.Repository.Interfaces;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,8 +39,31 @@ namespace ControleRotas
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IPessoaRepository, PessoaRepository>();
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
+            services.AddScoped<IAgendaRepository, AgendaRepository>();
+            services.AddScoped<IEmailRepository, EmailRepository>();
+            services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            services.AddScoped<IMunicipioRepository, MunicipioRepository>();
+            services.AddScoped<IOrdemServicoRepository, OrdemServicoRepository>();
+            services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+            services.AddScoped<ITelefoneRepository, TelefoneRepository>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //Validator Inject
+            services.AddTransient<IValidator<Funcionario>, FuncionarioValidator>();
+            services.AddTransient<IValidator<Agenda>, AgendaValidator>();
+            services.AddTransient<IValidator<Email>, EmailValidator>();
+            services.AddTransient<IValidator<Endereco>, EnderecoValidator>();
+            services.AddTransient<IValidator<Municipio>, MunicipioValidator>();
+            services.AddTransient<IValidator<OrdemServico>, OrdemServicoValidator>();
+            services.AddTransient<IValidator<Pessoa>, PessoaValidator>();
+            services.AddTransient<IValidator<Telefone>, TelefoneValidator>();
+            services.AddTransient<IValidator<Veiculo>, VeiculoValidator>();
+
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(fv => 
+                {
+                    fv.ImplicitlyValidateChildProperties = true;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

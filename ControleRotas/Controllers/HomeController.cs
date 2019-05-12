@@ -8,20 +8,15 @@ namespace ControleRotas.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository<Pessoa> pessoaRepository;
-        private readonly IRepository<Email> emailRepository;
-        private readonly IRepository<Endereco> enderecoRepository;
+        private readonly IPessoaRepository pessoaRepository;
 
-        public HomeController(IRepository<Pessoa> pessoaRepository,
-                              IRepository<Email> emailRepository,
-                              IRepository<Endereco> enderecoRepository)
+        public HomeController(IPessoaRepository pessoaRepository)
         {
             this.pessoaRepository = pessoaRepository;
-            this.emailRepository = emailRepository;
-            this.enderecoRepository = enderecoRepository;
         }
         public IActionResult Index()
         {
+            var pessoa = pessoaRepository.GetById(1);
             ViewData["Title"] = "Index";
             return View();
         }

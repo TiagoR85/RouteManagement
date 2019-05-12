@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace ControleRotas.Repository.Interfaces
 {
-    public interface IPessoaRepository : IRepository<Pessoa>
+    public interface IEmailRepository : IRepository<Email>
     {
-        void SetActive(int id, bool active);
+        ICollection<Email> GetEmailByPeople(Pessoa pessoa);
     }
 }
