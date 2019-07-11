@@ -1,4 +1,5 @@
 ﻿using ControleRotas.Context;
+using ControleRotas.Middleware;
 using ControleRotas.Models;
 using ControleRotas.Repository;
 using ControleRotas.Repository.Interfaces;
@@ -80,11 +81,13 @@ namespace ControleRotas
                 app.UseHsts();
             }
 
+
             app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthenticationMiddleware();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

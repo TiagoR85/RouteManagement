@@ -1,5 +1,6 @@
 ﻿using ControleRotas.Models;
 using ControleRotas.Repository.Interfaces;
+using ControleRotas.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,11 +11,17 @@ namespace ControleRotas.Controllers
     [Route("login")]
     public class LoginController : ControllerBase<Funcionario>
     {
-        private Funcionario funcionario;
+        private IViewModel viewModel;
         private IFuncionarioRepository funcionarioRepo;
+        private Funcionario funcionario;
 
         public LoginController(IFuncionarioRepository funcionarioRepository)
         {
+            viewModel = new ViewModel();
+            viewModel.Model = new Funcionario();
+            viewModel.ControllerName = "Login";
+            viewModel.ActionName = "Login";
+            viewModel.TitleBox = "Entrar - Routes Controller";
             funcionarioRepo = funcionarioRepository;
         }
 
@@ -23,12 +30,12 @@ namespace ControleRotas.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
-            TempData["Title"] = "Login";
-            return View();
+            return View(viewModel);
         }
 
-        [Route("login")]
+        
         [ValidateAntiForgeryToken]
+        [Route("login")]
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
@@ -39,7 +46,7 @@ namespace ControleRotas.Controllers
                     username != null && password != null
                     && username == funcionario.UserName && password == funcionario.Senha)
                 {
-                    HttpContext.Session.SetString("UserLogged", funcionario.UserName);
+                    AddObjectInSession("UserLogged", funcionario);
                     return Redirect("/Home");
                 }
                 else
@@ -48,12 +55,22 @@ namespace ControleRotas.Controllers
                     return RedirectToAction("index");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 TempData["Erro"] = "Usuário ou senha incorretos";
                 return RedirectToAction("index");
             }
+        }
 
+        [Route("logout")]
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            if (GetObjectFromSession("UserLogged") != null)
+            {
+                HttpContext.Session.Remove("UserLogged");
+            }
+            return Redirect("/Login");
         }
     }
 }

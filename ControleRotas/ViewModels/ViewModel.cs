@@ -1,6 +1,6 @@
 ﻿namespace ControleRotas.ViewModels
 {
-    public class LoginViewModel : IViewModel
+    public class ViewModel : IViewModel
     {
         public dynamic Model { get; set; }
         public dynamic ListModel { get; set; }

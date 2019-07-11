@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ControleRotas.Models
 {
@@ -6,190 +7,190 @@ namespace ControleRotas.Models
     {
         public enum TipoEndereco
         {
-            [Description("Residencial")] Residencial,
-            [Description("Comercial")] Comercial,
-            [Description("Entrega")] Entrega,
-            [Description("Cobrança")] Cobranca
+            [Display(Name ="Residencial")] Residencial,
+            [Display(Name ="Comercial")] Comercial,
+            [Display(Name ="Entrega")] Entrega,
+            [Display(Name ="Cobrança")] Cobranca
         }
 
         public enum TipoUrgencia
         {
             Alta,
-            [Description("Média")] Media,
+            [Display(Name ="Média")] Media,
             Baixa
         }
 
         public enum TipoPessoa
         {
-            [Description("Pessoa Jurídica")] Pessoa_Juridica,
-            [Description("Pessoa Física")] Pessoa_Fisica
+            [Display(Name ="Pessoa Jurídica")] Pessoa_Juridica,
+            [Display(Name ="Pessoa Física")] Pessoa_Fisica
         }
 
         public enum TipoConfirmacao
         {
-            [Description("Confirmado")] Confirmado,
-            [Description("Ausência")] Ausente
+            [Display(Name ="Confirmado")] Confirmado,
+            [Display(Name ="Ausência")] Ausente
         }
 
         public enum TipoContrante
         {
-            [Description("Fornecedor")] Fornecedor,
-            [Description("Cliente")] Cliente,
-			[Description("Funcionário")] Usuario
+            [Display(Name ="Fornecedor")] Fornecedor,
+            [Display(Name ="Cliente")] Cliente,
+			[Display(Name ="Funcionário")] Usuario
         }
 
         public enum TipoTelefone
         {
-            [Description("Celular")] Celular,
-			[Description("Residencial")] Residencial,
-            [Description("Comercial")] Comercial
+            [Display(Name ="Celular")] Celular,
+			[Display(Name ="Residencial")] Residencial,
+            [Display(Name ="Comercial")] Comercial
         }
 
         public enum TipoConta
         {
-            [Description("Pagar")] Pagar,
-            [Description("Receber")] Receber
+            [Display(Name ="Pagar")] Pagar,
+            [Display(Name ="Receber")] Receber
         }
 
         public enum TipoFrequencia
         {
-            [Description("Semanal")] Semanal,
-            [Description("Quinzenal")] Quinzenal,
-            [Description("Mensal")] Mensal,
-            [Description("Bimestral")] Bimestral,
-            [Description("Semestral")] Semestral,
-            [Description("Anual")] Anual
+            [Display(Name ="Semanal")] Semanal,
+            [Display(Name ="Quinzenal")] Quinzenal,
+            [Display(Name ="Mensal")] Mensal,
+            [Display(Name ="Bimestral")] Bimestral,
+            [Display(Name ="Semestral")] Semestral,
+            [Display(Name ="Anual")] Anual
         }
 
         public enum TipoParcela
         {
-            [Description("Valor Dividido")] Valor_Dividido,
-            [Description("Valor Repetido")] Valor_Repetido
+            [Display(Name ="Valor Dividido")] Valor_Dividido,
+            [Display(Name ="Valor Repetido")] Valor_Repetido
         }
 
         public enum TipoOrdenacaoConta
         {
-            [Description("Data de Vencimento")] Vencimento,
-            [Description("Data de Quitação")] Quitacao
+            [Display(Name ="Data de Vencimento")] Vencimento,
+            [Display(Name ="Data de Quitação")] Quitacao
         }
 
         public enum TipoSituacaoConta
         {
-            [Description("Em Aberto")] Aberto,
-            [Description("Quitado")] Quitado,
-            [Description("Todas")] Todas,
-            [Description("Isento")] Isento,
-            [Description("Perda")] Perda
+            [Display(Name ="Em Aberto")] Aberto,
+            [Display(Name ="Quitado")] Quitado,
+            [Display(Name ="Todas")] Todas,
+            [Display(Name ="Isento")] Isento,
+            [Display(Name ="Perda")] Perda
         }
 
         public enum TipoFiltroConta
         {
-            [Description("Data de Vencimento")] DataDeVencimento,
-            [Description("Data de Emissão")] DataDeEmissao,
-            [Description("Data de Quitação")] DataDeQuitacao
+            [Display(Name ="Data de Vencimento")] DataDeVencimento,
+            [Display(Name ="Data de Emissão")] DataDeEmissao,
+            [Display(Name ="Data de Quitação")] DataDeQuitacao
         }
 
         public enum TipoSituacao
         {
-            [Description("Ativo")] Ativo,
-            [Description("Inativo")] Inativo,
+            [Display(Name ="Ativo")] Ativo,
+            [Display(Name ="Inativo")] Inativo,
         }
 
         public enum TipoMarcaBandeira
         {
-            [Description("American Express")] AmericanExpress,
-            [Description("Elo")] Elo,
-            [Description("Hipercard")] Hipercard,
-            [Description("Master Card")] MasterCard,
-            [Description("Visa")] Visa,
-            [Description("Diners Club")] DinersClub,
-            [Description("BNDES")] BNDES,
-            [Description("Outras Bandeiras")] Outros
+            [Display(Name ="American Express")] AmericanExpress,
+            [Display(Name ="Elo")] Elo,
+            [Display(Name ="Hipercard")] Hipercard,
+            [Display(Name ="Master Card")] MasterCard,
+            [Display(Name ="Visa")] Visa,
+            [Display(Name ="Diners Club")] DinersClub,
+            [Display(Name ="BNDES")] BNDES,
+            [Display(Name ="Outras Bandeiras")] Outros
         }
 
         public enum EnumContaMovimentacao
         {
-            [Description("Caixa")] Caixa = 0,
-            [Description("Banco")] Banco = 1,
-            [Description("Cartão de Crédito")] CartaoCredito = 2,
+            [Display(Name ="Caixa")] Caixa = 0,
+            [Display(Name ="Banco")] Banco = 1,
+            [Display(Name ="Cartão de Crédito")] CartaoCredito = 2,
         }
 
         public enum EnumFuncaoMovimento
         {
-            [Description("Inserção de Movimentação")] Insercao = 0,
-            [Description("Saldo Inicial")] SaldoInicial = 1,
-            [Description("Inserção Manual de Movimentação")] InsercaoManual = 2,
-            [Description("Desfazer Inserção de Movimentação")] DesfazerInsercao = 3
+            [Display(Name ="Inserção de Movimentação")] Insercao = 0,
+            [Display(Name ="Saldo Inicial")] SaldoInicial = 1,
+            [Display(Name ="Inserção Manual de Movimentação")] InsercaoManual = 2,
+            [Display(Name ="Desfazer Inserção de Movimentação")] DesfazerInsercao = 3
         }
 
         public enum EnumTipoMovimento
         {
-            [Description("Débito")] Debito = 0,
-            [Description("Crédito")] Credito = 1,
+            [Display(Name ="Débito")] Debito = 0,
+            [Display(Name ="Crédito")] Credito = 1,
         }
 
         public enum EnumEspecie
         {
-            [Description("Dinheiro")] Dinheiro,
-            [Description("Cheque")] Cheque,
-            [Description("Cartão")] Cartao
+            [Display(Name ="Dinheiro")] Dinheiro,
+            [Display(Name ="Cheque")] Cheque,
+            [Display(Name ="Cartão")] Cartao
         }
 
         public enum TipoRelatorio
         {
-            [Description("Analítico")] Analitico,       // Completo
-            [Description("Sintetizado")] Sintetizado    // Por Data
+            [Display(Name ="Analítico")] Analitico,       // Completo
+            [Display(Name ="Sintetizado")] Sintetizado    // Por Data
         }
 
         public enum EnumTipoFormaPagamento
         {
-            [Description("Pagamento")] Pagamento,
-            [Description("Recebimento")] Recebimento
+            [Display(Name ="Pagamento")] Pagamento,
+            [Display(Name ="Recebimento")] Recebimento
         }
 
         public enum EnumTipoItemComercializavel
         {
-            [Description("Produto")] Produto,
-            [Description("Serviço")] Servico
+            [Display(Name ="Produto")] Produto,
+            [Display(Name ="Serviço")] Servico
         }
 
         public enum EnumTipoLancamento
         {
-            [Description("Entrada")] Entrada,
-            [Description("Saída")] Saida
+            [Display(Name ="Entrada")] Entrada,
+            [Display(Name ="Saída")] Saida
         }
 
         public enum EnumTipoLancamentoSaida
         {
-            [Description("Venda")] Venda,
-            [Description("Orçamento")] Orcamento
+            [Display(Name ="Venda")] Venda,
+            [Display(Name ="Orçamento")] Orcamento
         }
 
         public enum EnumBancoBoleto
         {
-            [Description("Banco do Brasil")] BancodoBrasil = 1,
-            [Description("Banco Banrisul")] Banrisul = 41,
-            [Description("Banco BASA")] Basa = 3,
-            [Description("Banco Bradesco")] Bradesco = 237,
-            [Description("Banco BRB")] BRB = 70,
-            [Description("Caixa Econômica Federal")] Caixa = 104,
-            [Description("Banco HSBC")] HSBC = 399,
-            [Description("Banco Itaú")] Itau = 341,
-            [Description("Banco Real")] Real = 356,
-            [Description("Banco Safra")] Safra = 422,
-            [Description("Banco Santander")] Santander = 33,
-            [Description("Banco Sicoob")] Sicoob = 756,
-            [Description("Banco Sicred")] Sicred = 748,
-            [Description("Banco Sudameris")] Sudameris = 347,
-            [Description("Itaú Unibanco")] Unibanco = 409,
-            [Description("Itaú Unicred")] Unicred = 136
+            [Display(Name ="Banco do Brasil")] BancodoBrasil = 1,
+            [Display(Name ="Banco Banrisul")] Banrisul = 41,
+            [Display(Name ="Banco BASA")] Basa = 3,
+            [Display(Name ="Banco Bradesco")] Bradesco = 237,
+            [Display(Name ="Banco BRB")] BRB = 70,
+            [Display(Name ="Caixa Econômica Federal")] Caixa = 104,
+            [Display(Name ="Banco HSBC")] HSBC = 399,
+            [Display(Name ="Banco Itaú")] Itau = 341,
+            [Display(Name ="Banco Real")] Real = 356,
+            [Display(Name ="Banco Safra")] Safra = 422,
+            [Display(Name ="Banco Santander")] Santander = 33,
+            [Display(Name ="Banco Sicoob")] Sicoob = 756,
+            [Display(Name ="Banco Sicred")] Sicred = 748,
+            [Display(Name ="Banco Sudameris")] Sudameris = 347,
+            [Display(Name ="Itaú Unibanco")] Unibanco = 409,
+            [Display(Name ="Itaú Unicred")] Unicred = 136
         }
 
         public enum EnumTipoComissao
         {
-            [Description("")] SemComissao = 0,
-            [Description("Percentual")] Percentual = 1,
-            [Description("Moeda")] Moeda = 2
+            [Display(Name ="")] SemComissao = 0,
+            [Display(Name ="Percentual")] Percentual = 1,
+            [Display(Name ="Moeda")] Moeda = 2
         }
 
         public enum EnumTipoRepresentanteSaida
@@ -200,15 +201,15 @@ namespace ControleRotas.Models
 
         public enum EnumTipoReajusteValores
         {
-            [Description("Acréscimo no Valor")] Acrescimo,
-            [Description("Desconto no Valor")] Desconto
+            [Display(Name ="Acréscimo no Valor")] Acrescimo,
+            [Display(Name ="Desconto no Valor")] Desconto
         }
 
         public enum EnumSituacaoParcela
         {
-            [Description("Normal")] Normal,
-            [Description("Isento")] Isento,
-            [Description("Perda")] Perda
+            [Display(Name ="Normal")] Normal,
+            [Display(Name ="Isento")] Isento,
+            [Display(Name ="Perda")] Perda
         }
 
         public enum EnumTipoNotaFiscal
@@ -226,71 +227,71 @@ namespace ControleRotas.Models
 
         public enum EnumTipoValorConferenciaCaixa
         {
-            [Description("Venda")] Venda,
-            [Description("Deposito")] Deposito,
-            [Description("Retirada")] Retirada,
-            [Description("Recebimento de Convênio")] RecebimentoConvenio,
-            [Description("Abertura")] Abertura
+            [Display(Name ="Venda")] Venda,
+            [Display(Name ="Deposito")] Deposito,
+            [Display(Name ="Retirada")] Retirada,
+            [Display(Name ="Recebimento de Convênio")] RecebimentoConvenio,
+            [Display(Name ="Abertura")] Abertura
         }
 
         public enum EnumTipoSimNao
         {
-            [Description("Não")] Nao = 0,
-            [Description("Sim")] Sim = 1,
+            [Display(Name ="Não")] Nao = 0,
+            [Display(Name ="Sim")] Sim = 1,
         }
 
         public enum EnumSituacaoBoleto
         {
-            [Description("Somente em Abertos")] SomenteAberto = 0,
-            [Description("Somente em Quitados")] SomenteQuitado = 1
+            [Display(Name ="Somente em Abertos")] SomenteAberto = 0,
+            [Display(Name ="Somente em Quitados")] SomenteQuitado = 1
         }
 
         public enum EnumSituacaoContrato
         {
-            [Description("Somente em Ativos")] Ativo = 0,
-            [Description("Somente em Inativos")] Inativo = 1,
-            [Description("Todos")] Todos = 2
+            [Display(Name ="Somente em Ativos")] Ativo = 0,
+            [Display(Name ="Somente em Inativos")] Inativo = 1,
+            [Display(Name ="Todos")] Todos = 2
         }
 
         public enum EnumTipoServico
         {
-            [Description("Serviço Normal")] Normal = 0,
-            [Description("Pacote de Serviços")] Pacote = 1
+            [Display(Name ="Serviço Normal")] Normal = 0,
+            [Display(Name ="Pacote de Serviços")] Pacote = 1
         }
 
         public enum EnumBuscaCep
         {
-            [Description("ViaCep")] ViaCep = 0,
-            [Description("Correios")] Correios = 1
+            [Display(Name ="ViaCep")] ViaCep = 0,
+            [Display(Name ="Correios")] Correios = 1
         }
 		
 		public enum EnumEstadosBr
 		{
 			Acre,
 			Alagoas,
-			[Description("Amapá")] Amapa,
+			[Display(Name ="Amapá")] Amapa,
 			Amazonas,
 			Bahia,
-			[Description("Ceará")] Ceara,
-			[Description("Distrito Federal")] DistritoFederal,
-			[Description("Espírito Santo")] EspiritoSanto,
-			[Description("Goiás")] Goias,
-			[Description("Maranhão")] Maranhao,
-			[Description("Mato Grosso")] MatoGrosso,
-			[Description("Mato Grosso do Sul")] MatoGrossoSul,
-			[Description("Minas Gerais")] MinasGerais,
-			[Description("Pará")] Para,
-			[Description("Paraíba")] Paraiba,
-			[Description("Paraná")] Parana,
+			[Display(Name ="Ceará")] Ceara,
+			[Display(Name ="Distrito Federal")] DistritoFederal,
+			[Display(Name ="Espírito Santo")] EspiritoSanto,
+			[Display(Name ="Goiás")] Goias,
+			[Display(Name ="Maranhão")] Maranhao,
+			[Display(Name ="Mato Grosso")] MatoGrosso,
+			[Display(Name ="Mato Grosso do Sul")] MatoGrossoSul,
+			[Display(Name ="Minas Gerais")] MinasGerais,
+			[Display(Name ="Pará")] Para,
+			[Display(Name ="Paraíba")] Paraiba,
+			[Display(Name ="Paraná")] Parana,
 			Pernambuco,
-			[Description("Piauí")] Piaui,
-			[Description("Rio de Janeiro")] RioJaneiro,
-			[Description("Rio Grande do Norte")] RioGrandeNorte,
-			[Description("Rio Grande do Sul")] RioGrandeSul,
-			[Description("Rondônia")] Rondonia,
+			[Display(Name ="Piauí")] Piaui,
+			[Display(Name ="Rio de Janeiro")] RioJaneiro,
+			[Display(Name ="Rio Grande do Norte")] RioGrandeNorte,
+			[Display(Name ="Rio Grande do Sul")] RioGrandeSul,
+			[Display(Name ="Rondônia")] Rondonia,
 			Roraima,
-			[Description("Santa Catarina")] SantaCatarina,
-			[Description("São Paulo")] SaoPaulo,
+			[Display(Name ="Santa Catarina")] SantaCatarina,
+			[Display(Name ="São Paulo")] SaoPaulo,
 			Sergipe,
 			Tocantins
 		}
@@ -300,7 +301,7 @@ namespace ControleRotas.Models
 			CHEVROLET,
 			VOLKSWAGEN,
 			FIAT,
-            [Description("MERCEDES-BENZ")] MERCEDESBENZ,
+            [Display(Name ="MERCEDES-BENZ")] MERCEDESBENZ,
 			CITROEN,
 			CHANA,
 			HONDA,
@@ -323,9 +324,9 @@ namespace ControleRotas.Models
 			ACURA,
 			ADAMO,
 			AGRALE,
-            [Description("ALFA ROMEO")] ALFAROMEO,
+            [Display(Name ="ALFA ROMEO")] ALFAROMEO,
 			AMERICAR,
-            [Description("ASTON MARTIN")] ASTONMARTIN,
+            [Display(Name ="ASTON MARTIN")] ASTONMARTIN,
 			AUDI,
 			BIANCO,
 			BMW,
@@ -360,7 +361,7 @@ namespace ControleRotas.Models
             KOENIGSEGG,
             LADA,
             LANCIA,
-            [Description("LAND ROVER")] LANDROVER,
+            [Display(Name ="LAND ROVER")] LANDROVER,
             LEXUS,
             LIFAN,
             LINCOLN,

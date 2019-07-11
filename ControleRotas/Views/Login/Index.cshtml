@@ -1,12 +1,14 @@
-﻿@{ 
+﻿@{
     Layout = null;
+    var func = (Funcionario) Model?.Model;
 }
+@model ControleRotas.ViewModels.ViewModel
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@TempData["Title"]</title>
+    <title>@Model.TitleBox</title>
     <!-- Última versão CSS compilada e minificada -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
@@ -23,25 +25,27 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form asp-action="login" asp-controller="Login" class="form-horizontal">
+                    <form asp-action="@Model.ActionName" asp-controller="@Model.ControllerName" class="form-horizontal">
                         <fieldset>
                             <!-- Prepended text-->
+                            <div asp-validation-summary="All"></div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="username"></label>
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">Username</span>
-                                        <input id="username" name="username" class="form-control" type="text" required>
+                                        <input asp-for="@func.UserName" name="username" class="form-control" required>
+                                        <span asp-validation-for="@func.UserName"></span>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="pass"></label>
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">Password</span>
-                                        <input id="pass" name="password" class="form-control" type="password" required>
+                                        <input asp-for="@func.Senha" name="password" class="form-control" type="password" required>
+                                        <span asp-validation-for="@func.Senha"></span>
                                     </div>
 
                                 </div>
